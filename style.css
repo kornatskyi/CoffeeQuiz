@@ -1,0 +1,40 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.hide {
+    display: none;
+}
+
+body {
+    --hue: var(--hue-neutral);
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100vh;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.container {
+    width: 400px;
+    height: 300px;
+    background-color: grey;
+}
+
+.answers-container {
+    color: white;
+    display: grid;
+    margin: 5px;
+}
+
+
+.confirm-btn {
+    border-radius: 0%;
+    background-color: rgb(155, 127, 255);
+    border: none;
+
+}
