@@ -8,26 +8,31 @@
     <title>Coffee quiz</title>
 </head>
 <body>
-    <class class="container">
-        <div>Question</div>
+    <div class="container">
+        <div id="main-content">
+        <div class="question" id="question">Question</div>
         <form class="answers-container">
-                    <label class="rbtn">
-                        <input type="radio" class="rbtn" name="answer">
+                    <label>
+                        <input type="radio" class="rbtn" id="rbtn1" name="answer">
                         Answer 1
                     </label>
-                    <label class="rbtn">
-                         <input type="radio" class="rbtn" name="answer">
+                    <label>
+                         <input type="radio" class="rbtn" id="rbtn2" name="answer">
                          Answer 2
                     </label>
-                    <label >
-                        <input type="radio" class="rbtn" name="answer">
+                    <label>
+                        <input type="radio" class="rbtn" id="rbtn3" name="answer">
                         Answer 3
                     </label>
         </form>
     
         <div class="control-buttons">
-            <button id="confirm-btn" class="confirm-btn">Confirm</button>
+            <button id="start-btn" class="btn">Start</button> 
+            <button id="confirm-btn" class="btn">Confirm</button>
         </div>
+
+    </div>
+
         <div class="recomendation hide">
             <h3>Name of coffee</h3>
             <p>Description</p>
