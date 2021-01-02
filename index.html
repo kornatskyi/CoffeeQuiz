@@ -4,34 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
-    <script defer src="script.js"></script>
+    <script defer src="js/script.js"></script>
+    <script defer src="js/main.js"></script>
     <title>Coffee quiz</title>
 </head>
 <body>
+    <button>Change color</button>
+
     <div class="container">
         <div id="main-content">
-        <div class="question" id="question">Question</div>
-        <form class="answers-container">
-                    <label>
-                        <input type="radio" class="rbtn" id="rbtn1" name="answer">
-                        Answer 1
-                    </label>
-                    <label>
-                         <input type="radio" class="rbtn" id="rbtn2" name="answer">
-                         Answer 2
-                    </label>
-                    <label>
-                        <input type="radio" class="rbtn" id="rbtn3" name="answer">
-                        Answer 3
-                    </label>
-        </form>
-    
-        <div class="control-buttons">
-            <button id="start-btn" class="btn">Start</button> 
-            <button id="confirm-btn" class="btn">Confirm</button>
+            <div class="question" id="question">Question</div>
+                <form class="answers-container">
+                            
+                            <label for="rbtn1" id="lrbtn1" >Answer 1</label>
+                            <input type="radio" name="answer" id="rbtn1" value="rbtn1">
+                            <label for="rbtn2" id="lrbtn2" >Answer 2</label>
+                            <input type="radio" name="answer" id="rbtn2" value="rbtn2">
+                            <label for="rbtn3" id="lrbtn3" >Answer3</label>
+                            <input type="radio" name="answer" id="rbtn3" value="rbtn3">
+                        
+                </form>
+        
+            <div class="control-buttons">
+                <button id="start-btn" class="btn">Start</button> 
+                <button id="confirm-btn" class="btn">Confirm</button>
+                <button id="result-btn" class="btn hide">Result</button>
+
+            </div>
+
+            <div id="results"></div>
         </div>
 
-    </div>
+    
 
         <div class="recomendation hide">
             <h3>Name of coffee</h3>
@@ -39,6 +43,5 @@
             <img src="" alt="">      
         </div>
     </div>
-</class>
 </body>
 </html>
