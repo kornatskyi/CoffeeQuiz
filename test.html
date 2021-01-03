@@ -4,21 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="js/testscript.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Test</title>
 </head>
 <body>
     <div id="main-container">
-        <div id="question-container">
+        <div id="clue-container">Clues</div>
+        <div class="hide" id="question-container">
             Question
         </div>
-        <div id="answers-container">Answers</div>
+        <div class="hide"  id="answers-container">Answers</div>
         <div id="control-panel">
-            <button id="back-btn">Back</button> 
-            <button id="submit-btn">Submit</button>
-            
+            <button class="hide" id="submit-btn" style="background-color: blueviolet;">Submit</button>
+            <button id="start-btn">Start</button>
+            <button class="hide" id="result-btn" style="background-color:aquamarine">Result</button>
 
         </div>
+
+        <div class="hide" id="result-container">
+            Results
+        </div>
     </div>
+
+
     
 </body>
 </html>
