@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
-    <script defer  src="js/script.js"></script>
+    <script defer src="js/script.js"></script>
     <!-- <script defer src="js/main.js"></script> -->
     <title>Coffee quiz</title>
 </head>
+
 <body>
-   <div id="main-container">
+    <div id="main-container">
+        <p id="counter">0/10</p>
         <!-- <div id="clue-container">Clues</div> -->
         <div class="hide" id="question-container">
             <div class="question-container" id="question-1" value="1">1. What flavors do you like in coffee?</div>
@@ -17,107 +20,65 @@
             <div class="question-container hide" id="question-3" value="3">3. How much caffeine do you need?</div>
             <div class="question-container hide" id="question-4" value="4">4. What roast level do you prefer?</div>
             <div class="question-container hide" id="question-5" value="5">5. What process do you like?</div>
-            <p id="counter">0/10</p>
-        </div>
-        <div class="hide"  id="answers-container">
             
-            <button class="answer-btn answer-btn-1" id="Berries" value="3" type="button">Berries</button>
-            <button class="answer-btn answer-btn-1" id="Honey" value="3" type="button">Honey</button>
-            <button class="answer-btn answer-btn-1" id="Grape" value="3" type="button">Grape</button>
-            <button class="answer-btn answer-btn-1" id="Citrus" value="3" type="button">Citrus</button>
-            <button class="answer-btn answer-btn-1" id="Chocolate" value="3" type="button">Chocolate</button>
-            <button class="answer-btn answer-btn-1" id="Nuts" value="3" type="button">Nuts</button>
-            <button class="answer-btn answer-btn-1" id="Stone fruits" value="3" type="button">Stone fruits</button>
-            <button class="answer-btn answer-btn-1" id="Floral" value="3" type="button">Floral</button>
-            <button class="answer-btn answer-btn-1" id="Caramel" value="3" type="button">Caramel</button>
- 
-            <button class="answer-btn answer-btn-2 hide" id="Drip" value="2" type="button">Drip</button>
-            <button class="answer-btn answer-btn-2 hide" id="Espresso" value="2" type="button">Espresso</button>
-            <button class="answer-btn answer-btn-2 hide" id="French press" value="2" type="button">French press</button>
-            <button class="answer-btn answer-btn-2 hide" id="Pour over" value="2" type="button">Pour over</button>
-            <button class="answer-btn answer-btn-2 hide" id="Cold brew" value="2" type="button">Cold brew</button>
-            <button class="answer-btn answer-btn-2 hide" id="Other" value="2" type="button">Other</button>
-
-            <button class="answer-btn answer-btn-3 hide" id="Full caffeine" value="1" type="button">Full caffeine</button>
-            <button class="answer-btn answer-btn-3 hide" id="Decaf" value="1" type="button">Decaf</button>
-  
-            <button class="answer-btn answer-btn-4 hide" id="Light roast" value="1" type="button">Light roast</button>
-            <button class="answer-btn answer-btn-4 hide" id="Medium roast" value="1" type="button">Medium roast</button>
-            <button class="answer-btn answer-btn-4 hide" id="Dark roast" value="1" type="button">Dark roast</button>
-            <button class="answer-btn answer-btn-4 hide" id="I don't know" value="1" type="button">I don't know</button>
-  
-            <button class="answer-btn answer-btn-5 hide" id="Natural" value="1" type="button">Natural</button>
-            <button class="answer-btn answer-btn-5 hide" id="Washed" value="1" type="button">Washed</button>
-            <button class="answer-btn answer-btn-5 hide" id="Honey process" value="1" type="button">Honey process</button>
-            <button class="answer-btn answer-btn-5 hide" id="Any" value="1" type="button">Any</button>
-
-        
-
-       
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
         </div>
-        <div id="control-panel">
-            <button class="hide" id="submit-btn" style="background-color: blueviolet;">Submit</button>
+        <div class="hide" id="answers-container">
+            <div class="answer-btn-1-container">
+                <button class="answer-btn answer-btn-1" id="Berries" value="3" type="button">Berries</button>
+                <button class="answer-btn answer-btn-1" id="Honey" value="3" type="button">Honey</button>
+                <button class="answer-btn answer-btn-1" id="Grape" value="3" type="button">Grape</button>
+                <button class="answer-btn answer-btn-1" id="Citrus" value="3" type="button">Citrus</button>
+                <button class="answer-btn answer-btn-1" id="Chocolate" value="3" type="button">Chocolate</button>
+                <button class="answer-btn answer-btn-1" id="Nuts" value="3" type="button">Nuts</button>
+                <button class="answer-btn answer-btn-1" id="Stone fruits" value="3" type="button">Stone fruits</button>
+                <button class="answer-btn answer-btn-1" id="Floral" value="3" type="button">Floral</button>
+                <button class="answer-btn answer-btn-1" id="Caramel" value="3" type="button">Caramel</button>
+            </div>
+            <div class="answer-btn-2-container">
+                <button class="answer-btn answer-btn-2 hide" id="Drip" value="2" type="button">Drip</button>
+                <button class="answer-btn answer-btn-2 hide" id="Espresso" value="2" type="button">Espresso</button>
+                <button class="answer-btn answer-btn-2 hide" id="French press" value="2" type="button">French
+                    press</button>
+                <button class="answer-btn answer-btn-2 hide" id="Pour over" value="2" type="button">Pour over</button>
+                <button class="answer-btn answer-btn-2 hide" id="Cold brew" value="2" type="button">Cold brew</button>
+                <button class="answer-btn answer-btn-2 hide" id="Other" value="2" type="button">Other</button>
+            </div>
+            <div class="answer-btn-3-container">
+                <button class="answer-btn answer-btn-3 hide" id="Full caffeine" value="1" type="button">Full
+                    caffeine</button>
+                <button class="answer-btn answer-btn-3 hide" id="Decaf" value="1" type="button">Decaf</button>
+            </div>
+            <div class="answer-btn-4-container">
+                <button class="answer-btn answer-btn-4 hide" id="Light roast" value="1" type="button">Light
+                    roast</button>
+                <button class="answer-btn answer-btn-4 hide" id="Medium roast" value="1" type="button">Medium
+                    roast</button>
+                <button class="answer-btn answer-btn-4 hide" id="Dark roast" value="1" type="button">Dark roast</button>
+                <button class="answer-btn answer-btn-4 hide" id="I don't know" value="1" type="button">I don't
+                    know</button>
+            </div>
+            <div class="answer-btn-5-container">
+                <button class="answer-btn answer-btn-5 hide" id="Natural" value="1" type="button">Natural</button>
+                <button class="answer-btn answer-btn-5 hide" id="Washed" value="1" type="button">Washed</button>
+                <button class="answer-btn answer-btn-5 hide" id="Honey process" value="1" type="button">Honey
+                    process</button>
+                <button class="answer-btn answer-btn-5 hide" id="Any" value="1" type="button">Any</button>
+            </div>
+
+
+            <div id="control-panel">
+                <button class="hide" id="submit-btn">Submit</button>
+
+            </div>
 
         </div>
-    <div class="hide" id="result-container">
-        Results
+        <div class="hide" id="result-container">
+            Results
+        </div>
     </div>
-    </div>
+
+
+
 </body>
+
 </html>

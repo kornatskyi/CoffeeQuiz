@@ -7,16 +7,8 @@
     display: none;
 }
 
-body {
-    --hue: var(--hue-neutral);
-    padding: 0;
-    margin: 0;
-    display: flex;
-    width: 100vh;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
+ button:focus {
+    outline: none;
 }
 
 .container {
@@ -35,7 +27,6 @@ body {
 .btn {
     border-radius: 0%;
     background-color: rgb(155, 127, 255);
-    border: none;
 
 }
 
@@ -52,8 +43,74 @@ button {
     border-style: solid;
     width: 200px;
     height: 40px;
+    margin: 5px;
+    margin-left: auto;
+    margin-right: auto 
     
 
 }
+
+.answer-btn-1-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+  
+    
+}
+
+
+
+.answer-btn-2-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    
+}
+
+.answer-btn-3-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    
+}
+
+.answer-btn-4-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    
+}
+
+.answer-btn-5-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    
+}
+
+.control-panel {
+    position: absolute;
+    
+}
+
+
+#submit-btn {
+    height: 40px;
+    width: 200px;
+    background-color: #2dc1bc;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+    margin-left: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    
+}
+
+#submit-btn:disabled {
+    background-color: #e7e7e7;
+}
+
+#submit-btn:hover:enabled{
+background-color: #568887;
+}
+
 
 

@@ -232,7 +232,8 @@ function start() {
     questionContainer.classList.remove("hide");
     answersContainer.classList.remove("hide");
     submitButton.classList.remove("hide");
-    document.getElementById('counter').innerText = `${stageCounter - 1}/${questionHTMLArray.length}`;
+    submitButton.disabled = true;
+    document.getElementById('counter').innerText = `${stageCounter} of ${questionHTMLArray.length}`;
 }
 
 let questionContainer = document.getElementById("question-container");
@@ -261,25 +262,30 @@ let arrayOfAnswers = [];
 /**3. Colect all answers in array by name in string's representation. And change button view after click on it*/
 function colectAnswers(e) {
     if (arrayOfAnswers.includes(e.target.innerText) || roundAnswerCounter >= e.target.value) {
-        bgChangeOff(e);
+        buttonOff(e);
         arrayOfAnswers = removeA(arrayOfAnswers, e.target.innerText);
+        if(roundAnswerCounter === 0){
+            submitButton.disabled = true;
+        }
 
     } else {
-        bgChangeOn(e);
+        buttonOn(e);
         arrayOfAnswers.push(e.target.innerText);
         roundAnswerCounter++;
+        submitButton.disabled = false;
     }
+    
 }
 
 /**Background color changers */
-function bgChangeOn(e) {
-    const rndCol = "rgb(" + "255" + "," + "0" + "," + "0" + ")";
-    e.target.style.backgroundColor = rndCol;
+function buttonOn(e) {
+
+    e.target.style.border = "2px solid #2dc1bc" 
+    
 }
 
-function bgChangeOff(e) {
-    const rndCol = "rgb(" + "192" + "," + "192" + "," + "192" + ")";
-    e.target.style.backgroundColor = rndCol;
+function buttonOff(e) {
+    e.target.style.border = "1px solid #bababa" 
 }
 
 
@@ -295,7 +301,7 @@ submitButton.addEventListener("click", function () {
         /**Set to zero roundAnswerCounter */
         roundAnswerCounter = 0;
         stageCounter++;
-        document.getElementById('counter').innerText = `${stageCounter - 1}/${questionHTMLArray.length}`;
+        document.getElementById('counter').innerText = `${stageCounter} of ${questionHTMLArray.length}`;
         if (stageCounter === questionHTMLArray.length) {
             submitButton.innerText = "Results";
         }
@@ -305,6 +311,7 @@ submitButton.addEventListener("click", function () {
             questionContainer.classList.add("hide");
             answersContainer.classList.add("hide");
             resultContainer.classList.remove("hide");
+            document.getElementById('counter').classList.add('hide');
             showMostWeightResult();
         } else {
             questionHTMLArray[stageCounter - 2].classList.add('hide');
@@ -316,6 +323,7 @@ submitButton.addEventListener("click", function () {
             Array.from(document.getElementsByClassName(`answer-btn-${stageCounter}`)).forEach(element => {
                 element.classList.remove('hide');
             });
+            submitButton.disabled = true;
 
 
         }

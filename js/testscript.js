@@ -11,7 +11,7 @@ const question1 = {
         "Floral",
         "Caramel",
     ],
-    numberOfPossibleAnswers: 3
+    numberOfPossibleAnswers: 3,
 };
 
 const question2 = {
@@ -24,25 +24,25 @@ const question2 = {
         "Cold brew",
         "Other",
     ],
-    numberOfPossibleAnswers: 2
+    numberOfPossibleAnswers: 2,
 };
 
 const question3 = {
     question: "3. How much caffeine do you need?",
     answers: ["Full caffeine", "Decaf"],
-    numberOfPossibleAnswers: 1
+    numberOfPossibleAnswers: 1,
 };
 
 const question4 = {
     question: "4. What roast level do you prefer?",
     answers: ["Light roast", "Medium roast", "Dark roast", "I don't know"],
-    numberOfPossibleAnswers: 1
+    numberOfPossibleAnswers: 1,
 };
 
 const question5 = {
     question: "What process do you like?",
     answers: ["Natural", "Washed", "Honey process", "Any"],
-    numberOfPossibleAnswers: 1
+    numberOfPossibleAnswers: 1,
 };
 
 /**Array of objects, which contain in  their fields a question and an array with answers*/
@@ -213,7 +213,7 @@ const results = [
     result9,
     result10,
     result11,
-    result12
+    result12,
 ];
 
 /**Array that contain customer's answers. */
@@ -239,13 +239,15 @@ let questionContainer = document.getElementById("question-container");
 
 let answersContainer = document.getElementById("answers-container");
 
-
-
 let roundAnswerCounter;
 /**Count inerations of questions */
 function questionCounterMethod() {
-    if(questionCounter < questions.length){
-    answerButtons = createArrayOfAnswerButtons(questions[questionCounter].answers, questions[questionCounter].numberOfPossibleAnswers);}
+    if (questionCounter < questions.length) {
+        answerButtons = createArrayOfAnswerButtons(
+            questions[questionCounter].answers,
+            questions[questionCounter].numberOfPossibleAnswers
+        );
+    }
     if (questionCounter < questions.length) {
         showQuestionAndAnswers(
             questions[questionCounter].question,
@@ -263,40 +265,35 @@ function questionCounterMethod() {
 
 let htmlStringWithAnswers = "";
 
-
 class AnswerButton {
-    constructor(answer, id, className, value){
+    constructor(answer, id, className, value) {
         this.answer = new String(answer);
         this.className = className;
         this.id = id;
         this.value = value;
     }
-    
+
     htmlElement;
 
     createStringOfHTMLRepresentation() {
-
         return `<button class="${this.className}" id="${this.id}">${this.answer}</button>`;
-
     }
 
     createHTMLElement() {
         this.htmlElement = document.createElement("button");
         this.htmlElement.innerText = `${this.answer}`;
         this.htmlElement.classList.add(this.className);
-        this.htmlElement.setAttribute('id', `${this.id}`);
-        this.htmlElement.setAttribute('value', `${this.value}`)
-
+        this.htmlElement.setAttribute("id", `${this.id}`);
+        this.htmlElement.setAttribute("value", `${this.value}`);
+        this.htmlElement.setAttribute("type", "button");
     }
-
 
     status;
     statusSwitcher() {
-        console.log('switch');
-        if(status === false || status === undefined) {
+        console.log("switch");
+        if (status === false || status === undefined) {
             status = true;
-            console.log('switch to true');
-
+            console.log("switch to true");
         } else {
             status = false;
         }
@@ -308,10 +305,16 @@ let answerButtons = [];
 function createArrayOfAnswerButtons(answers, numberOfPossibleAnswers) {
     answerButtons2 = [];
     for (let i = 0; i < answers.length; i++) {
-        answerButtons2.push(new AnswerButton(answers[i], answers[i], "answer-btn", numberOfPossibleAnswers));
+        answerButtons2.push(
+            new AnswerButton(
+                answers[i],
+                answers[i],
+                "answer-btn",
+                numberOfPossibleAnswers
+            )
+        );
     }
     return answerButtons2;
-
 }
 /**2. Set up questions from "questions" array by "questionCounter" number. Then create html string with answers in button appearance and put it into answerContainer.*/
 function showQuestionAndAnswers(question, answers, answerButtons) {
@@ -335,28 +338,25 @@ function showQuestionAndAnswers(question, answers, answerButtons) {
 // let answerButtons = [];
 
 function setAnswerListener() {
-    answerButtonsHTML = document.getElementsByClassName('answer-btn');
+    answerButtonsHTML = document.getElementsByClassName("answer-btn");
 
     for (let i = 0; i < answerButtonsHTML.length; i++) {
-        answerButtonsHTML[i].addEventListener('click', colectAnswers);
-
+        answerButtonsHTML[i].addEventListener("click", colectAnswers);
     }
-
 }
 
 /**Make it posible to pick a limited amount of answers*/
 
-
-
-
 /**4. Colect all answers in array by name in string's representation. And change button view after click on it*/
 function colectAnswers(e) {
     console.log(e.target.value);
-    if (scopeOfAnswers.includes(e.target.innerText) || roundAnswerCounter >= questions[questionCounter - 1].numberOfPossibleAnswers) {
+    if (
+        scopeOfAnswers.includes(e.target.innerText) ||
+        roundAnswerCounter >= questions[questionCounter - 1].numberOfPossibleAnswers
+    ) {
         bgChangeOff(e);
         console.log(scopeOfAnswers);
         scopeOfAnswers = removeA(scopeOfAnswers, e.target.innerText);
-        
     } else {
         bgChangeOn(e);
         scopeOfAnswers.push(e.target.innerText);
@@ -377,10 +377,11 @@ function bgChangeOff(e) {
 }
 
 let submitButton = document.getElementById("submit-btn");
-submitButton.addEventListener("click", function() { if(roundAnswerCounter === 0){
-    console.log("SELECT SOME ANSWER");
-} else {
-     questionCounterMethod()
+submitButton.addEventListener("click", function () {
+    if (roundAnswerCounter === 0) {
+        console.log("SELECT SOME ANSWER");
+    } else {
+        questionCounterMethod();
     }
 });
 /**Set up weight for each result*/
@@ -390,22 +391,23 @@ function countWeight() {
         keysArray = [];
         for (let k = 0; k < results[i].keys.length; k++) {
             keysArray.push(results[i].keys[k].key);
-            
         }
         for (let j = 0; j < scopeOfAnswers.length; j++) {
             if (keysArray.includes(scopeOfAnswers[j])) {
-                results[i].weight = results[i].weight + (1 * coefficientMultiplayer(results[i].keys, scopeOfAnswers[j]));
+                results[i].weight =
+                    results[i].weight +
+                    1 * coefficientMultiplayer(results[i].keys, scopeOfAnswers[j]);
             }
         }
     }
 }
-function coefficientMultiplayer(keys, scopeOfAnswersElement){
+function coefficientMultiplayer(keys, scopeOfAnswersElement) {
     for (let l = 0; l < keys.length; l++) {
-        if(keys[l].key === scopeOfAnswersElement){
+        if (keys[l].key === scopeOfAnswersElement) {
             return keys[l].coefficient;
         }
     }
- }
+}
 /**Array of weights. Helps to detect a highest weight. */
 let weights = [];
 
@@ -455,9 +457,19 @@ function removeA(arr) {
     console.log(arrin === arr);
     console.log(arrin);
     console.log(arr);
-    if(arrin === arr){
+    if (arrin === arr) {
         roundAnswerCounter++;
     }
-    
+
     return arrin;
 }
+
+let girdArr = [];
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+        start();
+    },
+    false
+);
