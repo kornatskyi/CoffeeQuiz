@@ -1,52 +1,52 @@
-const block1 = {
-    question: "1. What flawors do you like in coffee?",
-    answers: [
-        "Berries",
-        "Honey",
-        "Grape",
-        "Citrus",
-        "Chocolate",
-        "Nuts",
-        "Stone fruits",
-        "Floral",
-        "Caramel",
-    ],
-    numberOfPossibleAnswers: 3
-};
+// const question1 = {
+//     question: "1. What flavors do you like in coffee?",
+//     answers: [
+//         "Berries",
+//         "Honey",
+//         "Grape",
+//         "Citrus",
+//         "Chocolate",
+//         "Nuts",
+//         "Stone fruits",
+//         "Floral",
+//         "Caramel",
+//     ],
+//     numberOfPossibleAnswers: 3
+// };
 
-const block2 = {
-    question: "2. How do you make your coffee?",
-    answers: [
-        "Drip",
-        "Espresso",
-        "French press",
-        "Pour over",
-        "Cold brew",
-        "Other",
-    ],
-    numberOfPossibleAnswers: 2
-};
+// const question2 = {
+//     question: "2. How do you make your coffee?",
+//     answers: [
+//         "Drip",
+//         "Espresso",
+//         "French press",
+//         "Pour over",
+//         "Cold brew",
+//         "Other",
+//     ],
+//     numberOfPossibleAnswers: 2
+// };
 
-const block3 = {
-    question: "3. How much caffeine do you need?",
-    answers: ["Full caffeine", "Decaf"],
-    numberOfPossibleAnswers: 1
-};
+// const question3 = {
+//     question: "3. How much caffeine do you need?",
+//     answers: ["Full caffeine", "Decaf"],
+//     numberOfPossibleAnswers: 1
+// };
 
-const block4 = {
-    question: "4. What roast level do you prefer?",
-    answers: ["Light roast", "Medium roast", "Dark roast", "I don't know"],
-    numberOfPossibleAnswers: 1
-};
+// const question4 = {
+//     question: "4. What roast level do you prefer?",
+//     answers: ["Light roast", "Medium roast", "Dark roast", "I don't know"],
+//     numberOfPossibleAnswers: 1
+// };
 
-const block5 = {
-    question: "What process do you like?",
-    answers: ["Natural", "Washed", "Honey process", "Any"],
-    numberOfPossibleAnswers: 1
-};
+// const question5 = {
+//     question: "5. What process do you like?",
+//     answers: ["Natural", "Washed", "Honey process", "Any"],
+//     numberOfPossibleAnswers: 1
+// };
 
-/**Array of objects, which contain in  their fields a question and an array with answers*/
-const questions = [block1, block2, block3, block4, block5];
+// /**Array of objects, which contain in  their fields a question and an array with answers*/
+// const questions = [question1, question2, question3, question4, question5];
 
 const result1 = {
     name: "Seattle Space Blend",
@@ -200,7 +200,7 @@ const result12 = {
     weight: 0,
 };
 
-/**Array of results. Each object contains name, keys(matched answers), weigh(level of how much its mached with costumer's answers) */
+/**Array of results. Each object contains name, keys(matched answers), weigh(level of how much its mached with costumer's answers). Weitgh counts and sets up through countWeight() function*/
 const results = [
     result1,
     result2,
@@ -216,8 +216,179 @@ const results = [
     result12
 ];
 
+/** Strart of application. After page loaded, it calls star() function and setAnswerListenerOnCurentButtonsSet()*/
+document.addEventListener('DOMContentLoaded', function () {
+    start();
+    setAnswerListenersAtAnswerButtons();
+}, false);
 
+/** Iterates after each stage (step, each question setted up). */
+let stageCounter = 1;
 
-function displayBlock() {
-    
+let startButton = document.getElementById("start-btn");
+
+/**1. Change classes' parameters in html elements that have to be present first  */
+function start() {
+    questionContainer.classList.remove("hide");
+    answersContainer.classList.remove("hide");
+    submitButton.classList.remove("hide");
+    document.getElementById('counter').innerText = `${stageCounter - 1}/${questionHTMLArray.length}`;
 }
+
+let questionContainer = document.getElementById("question-container");
+
+let answersContainer = document.getElementById("answers-container");
+
+let roundAnswerCounter = 0;
+
+/** Array for keep all answers-btn*/
+let answerButtonElements = [];
+
+/**2. Set up listeners on all buttons with class "answer-btn". */
+function setAnswerListenersAtAnswerButtons() {
+    answerButtonElements = document.getElementsByClassName(`answer-btn`);
+
+    for (let i = 0; i < answerButtonElements.length; i++) {
+        answerButtonElements[i].addEventListener('click', colectAnswers);
+
+    }
+
+}
+
+/**Array that contain customer's answers. */
+let arrayOfAnswers = [];
+
+/**3. Colect all answers in array by name in string's representation. And change button view after click on it*/
+function colectAnswers(e) {
+    if (arrayOfAnswers.includes(e.target.innerText) || roundAnswerCounter >= e.target.value) {
+        bgChangeOff(e);
+        arrayOfAnswers = removeA(arrayOfAnswers, e.target.innerText);
+
+    } else {
+        bgChangeOn(e);
+        arrayOfAnswers.push(e.target.innerText);
+        roundAnswerCounter++;
+    }
+}
+
+/**Background color changers */
+function bgChangeOn(e) {
+    const rndCol = "rgb(" + "255" + "," + "0" + "," + "0" + ")";
+    e.target.style.backgroundColor = rndCol;
+}
+
+function bgChangeOff(e) {
+    const rndCol = "rgb(" + "192" + "," + "192" + "," + "192" + ")";
+    e.target.style.backgroundColor = rndCol;
+}
+
+
+let questionHTMLArray = document.getElementsByClassName('question-container');
+
+let submitButton = document.getElementById("submit-btn");
+
+/**Main control button, that submits all answers and move to the next stage, after the last question and answers' submitting show the results. */
+submitButton.addEventListener("click", function () {
+    if (roundAnswerCounter === 0) {
+        console.log("SELECT SOME ANSWERS");
+    } else {
+        /**Set to zero roundAnswerCounter */
+        roundAnswerCounter = 0;
+        stageCounter++;
+        document.getElementById('counter').innerText = `${stageCounter - 1}/${questionHTMLArray.length}`;
+        if (stageCounter === questionHTMLArray.length) {
+            submitButton.innerText = "Results";
+        }
+        /**Check if the curent stage is the last one. If it is, shows results. But if it isn't, manipulates with "hide" property in elements' classes the way to show next ones */
+        if (stageCounter === questionHTMLArray.length + 1) {
+            submitButton.classList.add('hide');
+            questionContainer.classList.add("hide");
+            answersContainer.classList.add("hide");
+            resultContainer.classList.remove("hide");
+            showMostWeightResult();
+        } else {
+            questionHTMLArray[stageCounter - 2].classList.add('hide');
+            questionHTMLArray[stageCounter - 1].classList.remove('hide');
+            Array.from(document.getElementsByClassName(`answer-btn-${stageCounter - 1}`)).forEach(element => {
+                element.classList.add('hide');
+
+            });
+            Array.from(document.getElementsByClassName(`answer-btn-${stageCounter}`)).forEach(element => {
+                element.classList.remove('hide');
+            });
+
+
+        }
+    }
+
+});
+/**Set up weight for each result*/
+let keysArray = [];
+function countWeight() {
+    for (let i = 0; i < results.length; i++) {
+        keysArray = [];
+        for (let k = 0; k < results[i].keys.length; k++) {
+            keysArray.push(results[i].keys[k].key);
+
+        }
+        for (let j = 0; j < arrayOfAnswers.length; j++) {
+            if (keysArray.includes(arrayOfAnswers[j])) {
+                results[i].weight = results[i].weight + getCoefficientFromNeededKey(results[i].keys, arrayOfAnswers[j]);
+            }
+        }
+    }
+}
+function getCoefficientFromNeededKey(keys, arrayOfAnswersElement) {
+    for (let l = 0; l < keys.length; l++) {
+        if (keys[l].key === arrayOfAnswersElement) {
+            return keys[l].coefficient;
+        }
+    }
+}
+/**Array of weights. Helps to detect a highest weight. */
+let weights = [];
+
+let resultContainer = document.getElementById("result-container");
+
+let resultString = "";
+
+let customerResult = [];
+
+/** Count most weight result.*/
+function showMostWeightResult() {
+    countWeight();
+
+    for (let i = 0; i < results.length; i++) {
+        weights.push(results[i].weight);
+    }
+    results.forEach((element) => {
+        if (element.weight === Math.max.apply(Math, weights)) {
+            customerResult.push(element);
+            resultString += `<h2>${element.name}</h2><br/>`;
+        }
+    });
+    resultContainer.innerHTML = resultString;
+
+}
+
+/* Remove element from array by value*/
+function removeA(arr) {
+    let arrin = [...arr];
+    var what,
+        a = arguments,
+        L = a.length,
+        ax;
+    while (L > 1 && arrin.length) {
+        what = a[--L];
+        while ((ax = arrin.indexOf(what)) !== -1) {
+            arrin.splice(ax, 1);
+            roundAnswerCounter--;
+        }
+    }
+    if (arrin === arr) {
+        roundAnswerCounter++;
+    }
+
+    return arrin;
+}
+

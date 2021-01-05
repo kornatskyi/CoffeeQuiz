@@ -42,3 +42,18 @@ body {
 button {
     background-color: rgb(192, 192, 192);
 }
+
+
+
+.answer-btn {
+    background-color: transparent;
+    border-width: 1px;
+    border-color: #bababa;
+    border-style: solid;
+    width: 200px;
+    height: 40px;
+    
+
+}
+
+
