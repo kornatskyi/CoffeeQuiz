@@ -240,7 +240,7 @@ let questionContainer = document.getElementById("question-container");
 
 let answersContainer = document.getElementById("answers-container");
 
-let roundAnswerCounter = 0;
+let answerCounter = 0;
 
 /** Array for keep all answers-btn*/
 let answerButtonElements = [];
@@ -259,22 +259,23 @@ function setAnswerListenersAtAnswerButtons() {
 /**Array that contain customer's answers. */
 let arrayOfAnswers = [];
 
+
 /**3. Colect all answers in array by name in string's representation. And change button view after click on it*/
-function colectAnswers(e) {
-    if (arrayOfAnswers.includes(e.target.innerText) || roundAnswerCounter >= e.target.value) {
+function colectAnswers(e) { 
+    if (arrayOfAnswers.includes(e.target.innerText) || answerCounter >= e.target.value) {
         buttonOff(e);
         arrayOfAnswers = removeA(arrayOfAnswers, e.target.innerText);
-        if(roundAnswerCounter === 0){
+        if(answerCounter === 0){
             submitButton.disabled = true;
         }
 
     } else {
         buttonOn(e);
         arrayOfAnswers.push(e.target.innerText);
-        roundAnswerCounter++;
+        answerCounter++;
         submitButton.disabled = false;
     }
-    
+
 }
 
 /**Background color changers */
@@ -295,11 +296,21 @@ let submitButton = document.getElementById("submit-btn");
 
 /**Main control button, that submits all answers and move to the next stage, after the last question and answers' submitting show the results. */
 submitButton.addEventListener("click", function () {
-    if (roundAnswerCounter === 0) {
+    /**Check answer if they have some spesial classes */
+    // if(document.getElementById(arrayOfAnswers[arrayOfAnswers.length-1]).classList[0] === "end-quiz"){
+    //         submitButton.classList.add('hide');
+    //         questionContainer.classList.add("hide");
+    //         answersContainer.classList.add("hide");
+    //         resultContainer.classList.remove("hide");
+    //         document.getElementById('counter').classList.add('hide');
+    //         resultContainer.innerHTML = "Hello";
+    //     return;
+    // }
+    if (answerCounter === 0) {
         console.log("SELECT SOME ANSWERS");
     } else {
         /**Set to zero roundAnswerCounter */
-        roundAnswerCounter = 0;
+        answerCounter = 0;
         stageCounter++;
         document.getElementById('counter').innerText = `${stageCounter} of ${questionHTMLArray.length}`;
         if (stageCounter === questionHTMLArray.length) {
@@ -390,11 +401,11 @@ function removeA(arr) {
         what = a[--L];
         while ((ax = arrin.indexOf(what)) !== -1) {
             arrin.splice(ax, 1);
-            roundAnswerCounter--;
+            answerCounter--;
         }
     }
     if (arrin === arr) {
-        roundAnswerCounter++;
+        answerCounter++;
     }
 
     return arrin;

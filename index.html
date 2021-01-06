@@ -12,21 +12,22 @@
 
 <body>
     <div id="main-container">
-        <p id="counter">0/10</p>
+        
         <!-- <div id="clue-container">Clues</div> -->
         <div class="hide" id="question-container">
-            <div class="question-container" id="question-1" value="1">1. What flavors do you like in coffee?</div>
-            <div class="question-container hide" id="question-2" value="2">2. How do you make your coffee?</div>
-            <div class="question-container hide" id="question-3" value="3">3. How much caffeine do you need?</div>
-            <div class="question-container hide" id="question-4" value="4">4. What roast level do you prefer?</div>
-            <div class="question-container hide" id="question-5" value="5">5. What process do you like?</div>
+            <div class="question-container" id="question-1" value="1">1. What flavors do you like in coffee?  <p  style="color: grey; font-size: 15px; display: inline-block;">(choose only 3)</p></div>
+            <div class="question-container hide" id="question-2" value="2">2. How do you make your coffee?<p  style="color: grey; font-size: 15px; display: inline-block;">(Choose only 2)</p></div>
+            <div class="question-container hide" id="question-3" value="3">3. How much caffeine do you need?<p  style="color: grey; font-size: 15px; display: inline-block;">(Choose only 1)</p></div>
+            <div class="question-container hide" id="question-4" value="4">4. What roast level do you prefer?<p  style="color: grey; font-size: 15px; display: inline-block;">(Choose only 1)</p></div>
+            <div class="question-container hide" id="question-5" value="5">5. What process do you like?<p  style="color: grey; font-size: 15px; display: inline-block;">(Choose only 1)</p></div>
             
         </div>
+        <p id="counter">0/10</p>
         <div class="hide" id="answers-container">
             <div class="answer-btn-1-container">
                 <button class="answer-btn answer-btn-1" id="Berries" value="3" type="button">Berries</button>
                 <button class="answer-btn answer-btn-1" id="Honey" value="3" type="button">Honey</button>
-                <button class="answer-btn answer-btn-1" id="Grape" value="3" type="button">Grape</button>
+                <button class="end-quiz answer-btn answer-btn-1" id="Grape" value="3" type="button">Grape</button>
                 <button class="answer-btn answer-btn-1" id="Citrus" value="3" type="button">Citrus</button>
                 <button class="answer-btn answer-btn-1" id="Chocolate" value="3" type="button">Chocolate</button>
                 <button class="answer-btn answer-btn-1" id="Nuts" value="3" type="button">Nuts</button>
