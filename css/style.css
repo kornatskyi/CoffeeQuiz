@@ -1,0 +1,226 @@
+/* * {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  z-index: -1;
+}
+
+body {
+  width: 100%;
+}
+
+
+
+a {
+  color: inherit;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  color: grey;
+  border-color: gray;
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.questions {
+  width: 200px;
+  font-size: 18px;
+}
+
+.answers {
+  width: 450px;
+}
+.answer {
+  border: 1px solid black;
+  border-radius: 5px;
+  z-index: 100;
+}
+
+.answer p {
+  line-height: normal;
+}
+
+#submit {
+  width: 200px;
+  background-color: black;
+  color: white;
+}
+#submit p {
+  top: 13px;
+}
+.container {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#step-counter {
+  color: rgb(80, 79, 79);
+  width: 40px;
+}
+
+.bean {
+  width: 30px;
+  left: 10px;
+  top: 9px;
+} */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+  
+  }
+  
+  body {
+    position: relative;
+    height: 2000px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  a {
+    color: inherit;
+  
+  }
+  
+  a:link {
+    text-decoration: none;
+  }
+  
+  a:visited {
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: grey;
+    border-color: gray;
+    text-decoration: none;
+  }
+  
+  a:active {
+    text-decoration: none;
+  }
+  
+  main {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  
+  }
+  
+  img {
+  
+    max-width: 100%;
+    height: auto;
+    width: 40px;
+  }
+  
+  .container {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .questions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 21px;
+  
+  }
+  
+  .step-counter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: gray;
+    margin: 10px 0px;
+  
+  }
+  
+  
+  .answers {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    
+  }
+  
+  .answer {
+    margin: 10px;
+    width: 200px;
+    height: 50px;
+    border: 1px solid black;
+    z-index: 999;
+  }
+  
+  .answer > img {
+    position: absolute;
+    margin: 5px;
+    /* Make text and img unclickable in <a> element. For make ckickable only <a>. */
+    pointer-events: none;
+  }
+  
+  .answer > p {
+    position: absolute;
+    margin-top: 17px;
+    margin-left: 60px;
+    padding: 0px;
+    /* Make text and img unclickable in <a> element. For make ckickable only <a>. */
+    pointer-events: none;
+  
+  
+  }
+  
+  .submit-field {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px 0px;
+  }
+  
+  .submit-field > a {
+    background-color: black;
+    width: 200px;
+    height: 40px;
+    text-align: center;
+  }
+  .submit-field p {
+    margin-top: 10px;
+    color: beige;
+  }
+  
+  .submit-field > a:hover {
+    color: white;
+  } 
+  
+  
+  #result-container {
+    
+  
+  }
+  
